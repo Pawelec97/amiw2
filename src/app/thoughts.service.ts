@@ -6,13 +6,31 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ThoughtsService {
-  constructor() {}
+  constructor() {
+  }
 
-  getThoughts(): Observable<Item[]> {
-    if (JSON.parse(localStorage.getItem('mysli')) == null) {
-   //   return [];
+  set(key: string, data: any) {
+    try {
+      localStorage.setItem(key, JSON.stringify(data));
+    } catch (e) {
+      console.error('Error saving to localStorage', e);
     }
-    return JSON.parse(localStorage.getItem('mysli'));
+  }
 
+  get(key: string) {
+    try {
+      return JSON.parse(localStorage.getItem(key));
+    } catch (e) {
+      console.error('Error getting data from localStorage', e);
+      return null;
+    }
   }
 }
+  // getThoughts(): Observable<Item[]> {
+  //   if (JSON.parse(localStorage.getItem('mysli')) == null) {
+  //     return new Observable<Item[]>();
+  //   }
+  //   return new Observable<Item[]>(JSON.parse(localStorage.getItem('mysli')));
+  //
+  // }
+

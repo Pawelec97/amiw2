@@ -1,0 +1,15 @@
+import * as moment from 'moment';
+
+export class Item {
+  date: moment.Moment;
+  // date: Date;
+  content: string;
+
+  constructor(date: moment.Moment, content: string) {
+    // constructor(date: Date, content: string){
+    this.date = date;
+
+    this.content = content;
+
+  }
+}
