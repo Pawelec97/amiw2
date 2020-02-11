@@ -1,0 +1,16 @@
+<mat-card>
+  <p>Golden Thoughts</p>
+  <mat-action-list>
+    <mat-list-item *ngFor="let item of thoughts">
+      <button mat-list-item [matMenuTriggerFor]="menu">"{{item.content}}" {{item.date | pipe}}</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="deleteThought(this.item)">Delete</button>
+      </mat-menu>
+    </mat-list-item>
+  </mat-action-list>
+  <mat-form-field>
+    <input matInput placeholder="Give your thought!" class="window" type="text" [(ngModel)]="screen"
+           (keyup.enter)="newZlotaMysl()">
+  </mat-form-field>
+  <button mat-raised-button (click)="newZlotaMysl()">Add</button>
+</mat-card>
